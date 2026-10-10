@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--
+  SAMPLE SITE #3: "Glow Studio Unisex Salon" (fictional business)
+  ---------------------------------------------------------------
+  CUSTOMIZE FOR A CLIENT (search with Ctrl + F):
+  1. "Glow Studio"   -> client's salon name
+  2. 919876543210    -> client's WhatsApp number (appears 2 times)
+  3. Prices in the SERVICES section
+  4. Address, timings and the map link in the CONTACT section
+  5. Photos: put 6 photos in the "images" folder named g1.jpg ... g6.jpg
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glow Studio | Unisex Salon & Spa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== COLORS ===== */
+    :root {
+      --main: #b0476b;     /* rose pink */
+      --accent: #d4af37;   /* gold */
+      --light: #fdf3f6;
+      --dark: #2b1a22;
+      --white: #ffffff;
+      --muted: #7d6570;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; color: var(--dark); background: var(--white); line-height: 1.6; }
+    section { padding: 80px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    h2 { text-align: center; font-size: 2.2rem; color: var(--main); margin-bottom: 8px; }
+    .subtitle { text-align: center; margin-bottom: 45px; color: var(--muted); }
+
+    /* ===== NAVBAR ===== */
+    nav { background: var(--white); padding: 15px 20px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--main); }
+    .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 28px; }
+    nav a { text-decoration: none; color: var(--dark); font-weight: 600; }
+    nav a:hover { color: var(--main); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(rgba(43,26,34,0.65), rgba(43,26,34,0.65)), url('images/g1.jpg') center/cover, var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 140px 20px;
+    }
+    .hero .tag { color: var(--accent); letter-spacing: 3px; font-size: 0.9rem; font-weight: 600; }
+    .hero h1 { font-size: 3rem; margin: 10px 0 15px; }
+    .hero p { font-size: 1.1rem; margin-bottom: 35px; opacity: 0.9; }
+
+    .btn { display: inline-block; background: var(--main); color: var(--white); padding: 14px 34px; border-radius: 30px; text-decoration: none; font-weight: 600; border: none; cursor: pointer; font-size: 1rem; font-family: inherit; transition: 0.3s; }
+    .btn:hover { background: var(--accent); color: var(--dark); }
+
+    /* ===== SERVICES ===== */
+    .services { background: var(--light); }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 25px; }
+    .service { background: var(--white); border-radius: 15px; padding: 30px 22px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+    .service:hover { transform: translateY(-6px); }
+    .service .icon { font-size: 2.6rem; }
+    .service h3 { margin: 10px 0 6px; font-size: 1.3rem; }
+    .service p { color: var(--muted); font-size: 0.95rem; }
+    .price { color: var(--main); font-weight: 600; font-size: 1.15rem; margin-top: 10px; }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+    .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 12px; background: var(--light); transition: 0.3s; }
+    .gallery-grid img:hover { transform: scale(1.03); }
+
+    /* ===== WHY US ===== */
+    .why { background: var(--light); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: center; }
+    .why-grid .icon { font-size: 2.3rem; }
+    .why-grid h3 { font-size: 1.2rem; margin: 6px 0; }
+    .why-grid p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ===== CONTACT + MAP ===== */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center; }
+    .info h3 { color: var(--main); font-size: 1.2rem; margin: 15px 0 4px; }
+    .info h3:first-child { margin-top: 0; }
+    .map iframe { width: 100%; height: 320px; border: 0; border-radius: 12px; }
+
+    /* ===== BOOKING FORM ===== */
+    .booking { background: var(--dark); color: var(--white); }
+    .booking h2 { color: var(--accent); }
+    .booking .subtitle { color: #cdb8c2; }
+    .book-form { max-width: 520px; margin: 0 auto; background: var(--white); padding: 30px; border-radius: 15px; }
+    .book-form label { display: block; color: var(--dark); font-weight: 600; margin-bottom: 5px; }
+    .book-form input, .book-form select { width: 100%; padding: 12px; border: 2px solid #f0dde5; border-radius: 8px; font-family: inherit; font-size: 1rem; margin-bottom: 18px; }
+    .book-form input:focus, .book-form select:focus { outline: none; border-color: var(--main); }
+    .book-form .btn { width: 100%; }
+
+    /* ===== FOOTER ===== */
+    footer { text-align: center; padding: 20px; background: #1d1117; color: #a8939d; font-size: 0.9rem; }
+
+    /* ===== FLOATING WHATSAPP ===== */
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.25); z-index: 20; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 700px) {
+      nav ul { display: none; }
+      .hero { padding: 100px 20px; }
+      .hero h1 { font-size: 2.1rem; }
+      h2 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav>
+    <div class="container">
+      <div class="logo">Glow <span>Studio</span></div>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#book">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <header class="hero">
+    <p class="tag">UNISEX SALON & SPA</p>
+    <h1>Look Good. Feel Great.</h1>
+    <p>Expert stylists · Premium products · Hygienic & relaxing space</p>
+    <a href="#book" class="btn">Book an Appointment</a>
+  </header>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <p class="subtitle">Something for everyone</p>
+      <div class="service-grid">
+        <div class="service">
+          <div class="icon">✂️</div>
+          <h3>Haircut & Styling</h3>
+          <p>Trendy cuts for men & women</p>
+          <p class="price">From ₹200</p>
+        </div>
+        <div class="service">
+          <div class="icon">💆</div>
+          <h3>Facial & Cleanup</h3>
+          <p>Glowing skin in 45 minutes</p>
+          <p class="price">From ₹600</p>
+        </div>
+        <div class="service">
+          <div class="icon">🧴</div>
+          <h3>Hair Spa</h3>
+          <p>Deep nourishment for healthy hair</p>
+          <p class="price">From ₹800</p>
+        </div>
+        <div class="service">
+          <div class="icon">👰</div>
+          <h3>Bridal Makeup</h3>
+          <p>Complete look for your big day</p>
+          <p class="price">From ₹5,000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <!-- Put 6 photos in the images folder named g1.jpg to g6.jpg -->
+  <section id="gallery">
+    <div class="container">
+      <h2>Our Work</h2>
+      <p class="subtitle">A look inside Glow Studio</p>
+      <div class="gallery-grid">
+        <img src="images/g1.jpg" alt="Salon interior">
+        <img src="images/g2.jpg" alt="Haircut and styling">
+        <img src="images/g3.jpg" alt="Facial treatment">
+        <img src="images/g4.jpg" alt="Hair spa">
+        <img src="images/g5.jpg" alt="Bridal makeup">
+        <img src="images/g6.jpg" alt="Nail art">
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY US ========== -->
+  <section class="why">
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <p class="subtitle">Care you can trust</p>
+      <div class="why-grid">
+        <div><div class="icon">🧼</div><h3>100% Hygienic</h3><p>Sanitised tools for every client</p></div>
+        <div><div class="icon">🌟</div><h3>Expert Stylists</h3><p>Trained, certified professionals</p></div>
+        <div><div class="icon">💎</div><h3>Premium Products</h3><p>Only trusted, branded products</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT + MAP ========== -->
+  <section id="contact">
+    <div class="container">
+      <h2>Visit Us</h2>
+      <p class="subtitle">We're easy to find</p>
+      <div class="contact-grid">
+        <div class="info">
+          <h3>📍 Address</h3>
+          <p>2nd Floor, City Centre Mall,<br>Main Road</p>
+          <h3>🕗 Timings</h3>
+          <p>Tue–Sun: 10:00 AM – 9:00 PM<br>Monday: Closed</p>
+          <h3>📞 Phone</h3>
+          <p>+91 98765 43210</p>
+        </div>
+        <!-- To change location: replace the text after ?q= with the client's address (use + for spaces) -->
+        <div class="map">
+          <iframe src="https://www.google.com/maps?q=India+Gate+New+Delhi&output=embed" loading="lazy" title="Salon location"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BOOKING FORM ========== -->
+  <section id="book" class="booking">
+    <div class="container">
+      <h2>Book an Appointment</h2>
+      <p class="subtitle">Choose your service and date. We'll confirm on WhatsApp.</p>
+      <form class="book-form" id="bookForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="e.g. Priya Sharma" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="10-digit mobile number" required>
+
+        <label for="service">Service</label>
+        <select id="service" required>
+          <option value="">Select a service</option>
+          <option>Haircut & Styling</option>
+          <option>Facial & Cleanup</option>
+          <option>Hair Spa</option>
+          <option>Bridal Makeup</option>
+        </select>
+
+        <label for="date">Preferred Date</label>
+        <input type="date" id="date" required>
+
+        <button type="submit" class="btn">📅 Book via WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>© 2026 Glow Studio Unisex Salon. All rights reserved.</footer>
+
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">💬</a>
+
+  <script>
+    // Stop people from picking a date in the past
+    document.getElementById("date").min = new Date().toISOString().split("T")[0];
+
+    // Send booking details to WhatsApp
+    document.getElementById("bookForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const service = document.getElementById("service").value;
+      const date = document.getElementById("date").value;
+
+      const message =
+        "Hi Glow Studio! I want to book an appointment.\n" +
+        "Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Service: " + service + "\n" +
+        "Date: " + date;
+
+      // encodeURIComponent safely converts spaces, & and new lines for the link
+      window.open("https://wa.me/916204546810?text=" + encodeURIComponent(message), "_blank");
+    });
+  </script>
+
+</body>
+</html>
